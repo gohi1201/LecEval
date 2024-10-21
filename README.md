@@ -1,15 +1,16 @@
 # LecEval
-This is an official repository for a LecEval, a multimodal framework aimed at lecture assessment across predefined criteria: Faithfulness, Clarity, Structure, and Inspiration. 
+This is an official repository for a LecEval, a multimodal framework aimed at lecture assessment across predefined criteria: **Faithfulness**, **Clarity**, **Structure**, and **Inspiration**. 
 
 ## Overview
-The general framework of LecEval. 
+The general framework of LecEval:
 
 (1) **Evaluation Criteria Definition**: We establish a set of criteria that capture the essential qualities of a lecture, serving as the foundation for our assessment process. 
 
 (2) **Data Preparation**: We collect data from online courses, extracting both presentation slides and the accompanying speech. We engage experts to evaluate the lectures across predefined criteria, with each criterion rated on a scale from 1 to 5. 
 
 (3) **Model Training**: We utilize the expert-rated scores to train a model to assess lectures in relation to their slides.
-![](/LecEval/overview.png)
+
+![](overview.png)
 
 ## Dataset Structure
 The dataset consists of slides extracted from various online courses on YouTube, each paired with speech transcripts and human ratings ranging from 1 to 5. The data format is as follows:
