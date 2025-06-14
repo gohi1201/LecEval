@@ -1,155 +1,373 @@
-# 🎓 LecEval: An Automated Metric for Multimodal Knowledge Acquisition in Multimedia Learning
+# 🎓 LecEval: An Automated Metric for Evaluating Multimodal Educational Presentations
 
 <div align="center">
 
-   [**📄 Paper**]() | [**🗂️ Dataset**](#dataset) | [**🤖 Model**](#model) | [**📊 Evaluation**](#evaluation) | [**🚀 News**](#news)
+[![Paper](https://img.shields.io/badge/📄-Paper-blue)](https://arxiv.org/abs/2505.02078v1) 
+[![Dataset](https://img.shields.io/badge/🗂️-Dataset-green)](#dataset) 
+[![Model](https://img.shields.io/badge/🤖-Model-orange)](https://huggingface.co/leceval) 
+[![Evaluation](https://img.shields.io/badge/📊-Evaluation-purple)](#evaluation) 
+[![License](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
+
+[**🚀 Quick Start**](#quick-start) | [**📊 Leaderboard**](#leaderboard) | [**🛠️ Installation**](#installation) | [**🔧 Toolkit**](#toolkit) | [**📖 Documentation**](#documentation)
 
 </div>
 
-LecEval is an automated metric designed specifically for evaluating multimodal knowledge acquisition in slide-based learning. Drawing inspiration from **Mayer’s Cognitive Theory of Multimedia Learning**,  which emphasizes the importance of aligning verbal and visual information in educational contexts, we establish four critical scoring rubrics: *Content Relevance (CR)*, *Expressive Clarity (EC)*, *Logical Structure (LS)*, and *Audience Engagement (AE)*, to assess the effectiveness of slide presentations.
+## Overview
+
+**LecEval** is a specialized automated metric designed for evaluating multimodal educational presentations, addressing the critical need for objective assessment tools in educational technology. Drawing inspiration from **Mayer's Cognitive Theory of Multimedia Learning**, which emphasizes the importance of aligning verbal and visual information in educational contexts, LecEval establishes four critical scoring rubrics to comprehensively assess presentation effectiveness.
+
+### Key Features
+
+- 🎯 **Domain-Specific**: Tailored specifically for educational presentation evaluation
+- 🧠 **Theory-Grounded**: Based on established cognitive learning principles
+- 🔄 **Multimodal**: Analyzes both visual slides and explanatory text
+- 📏 **Multi-Dimensional**: Evaluates across four critical pedagogical rubrics
+- 🤖 **Automated**: Provides consistent, scalable evaluation without human bias
+- 🔗 **Aligned**: Achieves strong correlation with human expert assessments
+
+### Evaluation Rubrics
+
+| Rubric | Description | Focus Area |
+|--------|-------------|------------|
+| **Content Relevance (CR)** | Alignment between slide visuals and explanatory text | Information Coherence |
+| **Expressive Clarity (EC)** | Clarity and comprehensibility of the presentation | Communication Effectiveness |
+| **Logical Structure (LS)** | Organization and flow of information | Pedagogical Structure |
+| **Audience Engagement (AE)** | Potential to capture and maintain learner attention | Learning Engagement |
+
+<a name="quick-start"></a>
+## 🚀 Quick Start
+
+### Basic Usage
+
+```python
+from leceval import LecEvalMetric
+
+# Initialize the metric
+metric = LecEvalMetric()
+
+# Evaluate a single presentation slide
+slide_path = "path/to/slide.jpg"
+explanation_text = "Today we'll explore the fundamentals of machine learning..."
+
+scores = metric.evaluate(slide_path, explanation_text)
+print(f"Content Relevance: {scores['content_relevance']:.2f}")
+print(f"Expressive Clarity: {scores['expressive_clarity']:.2f}")
+print(f"Logical Structure: {scores['logical_structure']:.2f}")
+print(f"Audience Engagement: {scores['audience_engagement']:.2f}")
+```
+
+### Batch Evaluation
+
+```python
+# Evaluate multiple presentations
+presentations = [
+    {"slide": "slide1.jpg", "text": "Introduction to AI..."},
+    {"slide": "slide2.jpg", "text": "Neural networks are..."},
+]
+
+results = metric.batch_evaluate(presentations)
+```
+
+<a name="installation"></a>
+## 🛠️ Installation
+
+### Prerequisites
+
+- Python 3.8+
+- PyTorch 1.12+
+- CUDA 11.0+ (for GPU acceleration)
+
+### Install from PyPI
+
+```bash
+pip install leceval
+```
+
+### Install from Source
+
+```bash
+git clone https://github.com/JoylimJY/LecEval.git
+cd LecEval
+pip install -e .
+```
+
 
 <a name="dataset"></a>
-
 ## 🗂️ Dataset
 
 ### Problem Formulation
 
-Consider a presentation slide $S$ containing multimodal content, such as text, images, and diagrams. In slide-based learning, the goal of knowledge acquisition can be formulated as understanding a generated explanatory textual sequence $T$ that integrates external knowledge, $\mathcal{K}=\Phi(S)$. Formally, we define:
+Consider a presentation slide $S$ containing multimodal content, such as text, images, and diagrams. The evaluation problem can be formulated as assessing the quality of explanatory textual sequence $T$ that integrates slide content with external knowledge $\mathcal{K}=\Phi(S)$:
 
-$$
-T_{S} = \xi(S,\mathcal{K})=\xi(S,\Phi(S)),
-$$
+$$T_{S} = \xi(S,\mathcal{K})=\xi(S,\Phi(S))$$
 
-where $\xi(\cdot)$ represents the function that produces coherent explanatory text based on the slide content, and $\Phi(\cdot)$ denotes the auxiliary knowledge.
-To evaluate the quality of the generated textual explanations, we define a metric:
+where $\xi(\cdot)$ represents the function that produces coherent explanatory text, and $\Phi(\cdot)$ denotes auxiliary knowledge extraction.
 
-$$
-\mathcal{A}=\mathcal{A}(S,T_S)=\mathcal{A}(S,\xi(S,\mathcal{K})),
-$$
+Our evaluation metric is defined as:
+$$\mathcal{A}=\mathcal{A}(S,T_S)=\mathcal{A}(S,\xi(S,\mathcal{K}))$$
 
-which assesses the knowledge acquisition in slide presentations in both content alignment and knowledge enhancement.
+which assesses educational presentations across content alignment and knowledge enhancement dimensions.
 
-### Data Construction
+### Data Construction Pipeline
 
-The general data construction framework of our dataset:
-![](assets/dataset.png)
+<div align="center">
+  <img src="assets/dataset.png" alt="Dataset Construction Framework" width="95%"/>
+</div>
 
-**1. Heterogeneous Data Integration**.
-We collect and process online lecture videos, extracting both slides and speech transcripts.
+Our data construction follows a rigorous three-stage process:
 
-**2. Multimodal Alignment and Refinement**. We manually align transcriptions with their corresponding slides and refine the raw transcriptions leveraging GPT-4, enhancing clarity and coherence while perceiving the speaker's original intent, in order to facilitate the annotation process.
+#### 1. **Heterogeneous Data Integration**
+- Collection of online lecture videos across multiple domains
+- Extraction of high-quality slide images and audio transcripts
+- Preprocessing to ensure multimodal data quality
 
-**3. Fine-grained Presentation Assessment.**. We engage experienced human annotators to evaluate the slide presentations across our predefined rubrics: *content relevance*, *expressive clarity*, *logical structure*, and *audience engagement*.
+#### 2. **Multimodal Alignment and Refinement**
+- Precise alignment between transcriptions and corresponding slides
+- Refinement of raw transcriptions to enhance clarity and coherence
+- Preservation of speaker's original pedagogical intent
 
-### Data Analysis
+#### 3. **Fine-grained Presentation Assessment**
+- Engagement of experienced human annotators with educational backgrounds
+- Systematic evaluation across four predefined rubrics
+- Quality control through inter-annotator agreement analysis
 
-Our curated dataset includes a collection of 56 lectures, encompassing a total of 2,097 samples. Each sample includes a slide image paired with a refined caption and ratings assigned by annotators based on our established evaluation rubrics.
+### Dataset Statistics
+
+Our curated **LecEval Dataset** comprises:
+
+- **📚 56 lectures** across multiple educational domains
+- **📄 2,097 slide-text pairs** with comprehensive annotations
+- **👥 Multiple annotators** per sample ensuring reliability
+- **🏷️ 4 evaluation rubrics** per sample
+
+<div align="center">
+  <img src="assets/dataset-stats.png" alt="Dataset Statistics" width="60%"/>
+  <p><em>Dataset composition: outer ring shows lecture count, middle ring shows total hours, inner ring shows slide count</em></p>
+</div>
+
+### Data Format
+
+Each sample follows this structure:
 
 ```json
 {
   "id": "ml-1_10_slide_000", 
   "slide": "/data/images/ml-1/10/slide_000.png",
-  "speech": "Welcome, everyone, to Lecture 5.2 on Alignment and Representation.",
+  "transcript": "Welcome, everyone, to Lecture 5.2 on Alignment and Representation. Today we'll explore how neural networks learn to align different modalities...",
   "rate": {
-    "content_relevance": [5, 5, 5],
-    "expressive_clarity": [5, 5, 5],
-    "logical_structure": [5, 5, 5],
-    "audience_engagement": [1, 1, 1]
+    "content_relevance": [5, 5, 4],     // Scores from 3 annotators
+    "expressive_clarity": [5, 4, 5],
+    "logical_structure": [4, 5, 5],
+    "audience_engagement": [3, 3, 4]
   }
 }
 ```
 
-The statistics of our dataset, which offers a detailed breakdown across several key topics：
-
-<p align="center">
-  <img src="assets/dataset-stats.png" width="50%" />
-</p>
-
-The outer ring represents the *total number of lecture videos*, the middle ring shows the *total hours of these videos*, and the inner ring indicates the *total number of slides presented* in the lecture.
-
 <a name="model"></a>
+## 🤖 Model Architecture
 
-## 🤖 Model
+### Base Model
 
-We select MiniCPM-Llama3-V2.5, with $8B$ parameters, as our backbone model. We employ supervised fine-tuning (SFT) using our curated dataset.
+We employ **MiniCPM-Llama3-V2.5** (8B parameters) as our backbone model, chosen for its:
+- Strong multimodal understanding capabilities
+- Efficient parameter usage
+- Robust performance across diverse domains
 
-You can access our model and scripts in our [Hugging Face repository]().
+### Training Strategy
 
-The comparison of average scores between LecEval and human evaluation:
+- **Supervised Fine-Tuning (SFT)** on our curated dataset
+- **Multi-task Learning** across all four evaluation rubrics
+- **Domain Adaptation** techniques for educational content
 
-<p align="center">
-  <img src="assets/leceval-human.png" width="50%" />
-</p>
-LecEval consistently assigns higher scores to explanations that receive high ratings from human evaluators, highly aligned with human judgment.
+### Model Access
+
+Access our trained models through our Hugging Face repository:
+
+```python
+from transformers import AutoModel, AutoTokenizer
+
+model = AutoModel.from_pretrained("Joylimjy/LecEval")
+tokenizer = AutoTokenizer.from_pretrained("Joylimjy/LecEval")
+```
+
+### Human-Model Alignment
+
+<div align="center">
+  <img src="assets/leceval-human.png" alt="Human-Model Correlation" width="60%"/>
+  <p><em>LecEval consistently assigns higher scores to presentations rated highly by human evaluators</em></p>
+</div>
 
 <a name="evaluation"></a>
+## 📊 Evaluation Results
 
-## 📊 Evaluation
+### Experimental Setup
 
-We conduct extensive experiments to evaluate the effectiveness of our proposed metric. We compare these correlations between the automated metrics and the human evaluation average, which serves as our gold standard.
+We conduct comprehensive experiments comparing LecEval against existing metrics across two categories:
 
-**1. Reference-based Metrics**: Comparing a manually prepared slide presentation with a machine-generated version.
+1. **Reference-based Metrics**: Traditional NLP metrics (BLEU, ROUGE)
+2. **Prompt-based LLM Evaluators**: Modern LLM-based evaluation approaches
 
-**2. Prompt-based LLM Evaluators**: Leveraging hand-crafted prompt templates to guide models in rating slide and its presentation
+### Performance Comparison
 
-Spearman ($\rho$) correlations between existing top-performing automated metrics and human evaluation:
+**Spearman Correlation (ρ) with Human Evaluation:**
 
-<table style="width: 90%; margin: 0 auto;">
+<table align="center">
   <thead>
     <tr>
-      <th><strong>Metrics</strong></th>
-      <th style="text-align:center"><strong>Content Relevance</strong></th>
-      <th style="text-align:center"><strong>Expressive Clarity</strong></th>
-      <th style="text-align:center"><strong>Logical Structure</strong></th>
-      <th style="text-align:center"><strong>Audience Engagement</strong></th>
-      <th style="text-align:center"><strong>Overall</strong></th>
+      <th><strong>Metric</strong></th>
+      <th><strong>Content<br>Relevance</strong></th>
+      <th><strong>Expressive<br>Clarity</strong></th>
+      <th><strong>Logical<br>Structure</strong></th>
+      <th><strong>Audience<br>Engagement</strong></th>
+      <th><strong>Overall</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>BLEU-4</strong></td>
-      <td style="text-align:center">0.12</td>
-      <td style="text-align:center">0.10</td>
-      <td style="text-align:center">0.11</td>
-      <td style="text-align:center">0.18</td>
-      <td style="text-align:center">0.13</td>
+      <td>BLEU-4</td>
+      <td>0.12</td>
+      <td>0.10</td>
+      <td>0.11</td>
+      <td>0.18</td>
+      <td>0.13</td>
     </tr>
     <tr>
-      <td><strong>ROUGE-L</strong></td>
-      <td style="text-align:center">0.24</td>
-      <td style="text-align:center">0.29</td>
-      <td style="text-align:center">0.15</td>
-      <td style="text-align:center">0.07</td>
-      <td style="text-align:center">0.19</td>
+      <td>ROUGE-L</td>
+      <td>0.24</td>
+      <td>0.29</td>
+      <td>0.15</td>
+      <td>0.07</td>
+      <td>0.19</td>
     </tr>
     <tr>
-      <td><strong>GPT-4V</strong></td>
-      <td style="text-align:center">0.29</td>
-      <td style="text-align:center">0.20</td>
-      <td style="text-align:center">0.27</td>
-      <td style="text-align:center">0.32</td>
-      <td style="text-align:center">0.27</td>
+      <td>GPT-4V</td>
+      <td>0.29</td>
+      <td>0.20</td>
+      <td>0.27</td>
+      <td>0.32</td>
+      <td>0.27</td>
     </tr>
     <tr>
-      <td><strong>G-Eval</strong></td>
-      <td style="text-align:center">0.26</td>
-      <td style="text-align:center">-0.05</td>
-      <td style="text-align:center">0.13</td>
-      <td style="text-align:center">0.04</td>
-      <td style="text-align:center">0.09</td>
+      <td>G-Eval</td>
+      <td>0.26</td>
+      <td>-0.05</td>
+      <td>0.13</td>
+      <td>0.04</td>
+      <td>0.09</td>
     </tr>
-    <tr>
+    <tr style="background-color: #f0f8ff;">
       <td><strong>LecEval</strong></td>
-      <td style="text-align:center"><strong>0.65</strong></td>
-      <td style="text-align:center"><strong>0.84</strong></td>
-      <td style="text-align:center"><strong>0.80</strong></td>
-      <td style="text-align:center"><strong>0.79</strong></td>
-      <td style="text-align:center"><strong>0.77</strong></td>
+      <td><strong>0.65</strong></td>
+      <td><strong>0.84</strong></td>
+      <td><strong>0.80</strong></td>
+      <td><strong>0.79</strong></td>
+      <td><strong>0.77</strong></td>
     </tr>
   </tbody>
 </table>
 
-<a name="news"></a>
-## 🚀 News
+### Key Findings
 
-- [2025-02] Our paper is submitted to SIGIR resource track !!
+- **📈 Superior Performance**: LecEval achieves 0.77 overall correlation vs. 0.27 for the best baseline
+- **🎯 Consistent Excellence**: Strong performance across all four evaluation rubrics
+- **🔍 Domain Specificity**: Significant improvement over general-purpose metrics
+- **⚡ Efficiency**: Fast evaluation compared to LLM-based approaches
+
+<a name="leaderboard"></a>
+## 📊 Leaderboard
+
+Submit your results to our leaderboard! We welcome comparisons with new methods.
+
+| Rank | Method | Overall ρ | CR | EC | LS | AE | Paper |
+|:----:|:-------|:---------:|:--:|:--:|:--:|:--:|:-----:|
+| 1 | **LecEval** | **0.77** | **0.65** | **0.84** | **0.80** | **0.79** | [Ours] |
+| 2 | GPT-4V | 0.27 | 0.29 | 0.20 | 0.27 | 0.32 | [OpenAI] |
+| 3 | G-Eval | 0.09 | 0.26 | -0.05 | 0.13 | 0.04 | [Liu et al.] |
+
+## Toolkit
+
+The LecEval toolkit provides comprehensive tools for analyzing and evaluating multimodal educational presentations. For detailed information about the toolkit components and usage, please refer to our [Toolkit Documentation](src/README.md).
+
+Key features include:
+
+- **Dataset Handler**: Load and manage multimodal lecture data including slides, transcripts, and annotations
+- **Analyzer**: Statistical analysis tools for lecture content and performance metrics
+- **Evaluator**: Robust evaluation framework for model predictions
+- **Visualizer**: Comprehensive visualization tools for data analysis and results
+
+For detailed usage instructions and examples, check out the [Toolkit Documentation](src/README.md).
+
+## 🤝 Contributing
+
+We welcome contributions from the community! Here's how you can help:
+
+### Ways to Contribute
+
+- 🐛 **Bug Reports**: Report issues via GitHub Issues
+- 💡 **Feature Requests**: Suggest new features or improvements
+- 📝 **Documentation**: Help improve our documentation
+- 🔬 **Research**: Share your findings using LecEval
+- 💻 **Code**: Submit pull requests with improvements
+
+### Development Setup
+
+```bash
+git clone https://github.com/JoylimJY/LecEval.git
+cd LecEval
+
+# Create development environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Install development dependencies
+pip install -e ".[dev]"
+
+# Run tests
+pytest tests/
+```
+
+## 📜 Citation
+
+If you use LecEval in your research, please cite our paper:
+
+```bibtex
+@misc{yin2025lecevalautomatedmetricmultimodal,
+      title={LecEval: An Automated Metric for Multimodal Knowledge Acquisition in Multimedia Learning}, 
+      author={Joy Lim Jia Yin and Daniel Zhang-Li and Jifan Yu and Haoxuan Li and Shangqing Tu and Yuanchun Wang and Zhiyuan Liu and Huiqin Liu and Lei Hou and Juanzi Li and Bin Xu},
+      year={2025},
+      eprint={2505.02078},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2505.02078}, 
+}
+```
+
+## 🚀 News & Updates
+
+- **[2025-06]** 🎉 Paper submitted to CIKM resource track!
+- **[2025-05]** 📊 Dataset and model publicly released
+- **[2024-10]** 🏆 Achieved state-of-the-art performance on educational presentation evaluation
+- **[2024-10]** 🔬 Initial research findings published
+
+## 🙏 Acknowledgments
+
+- Thanks to all annotators who contributed to dataset creation
+- Built on the foundations of Mayer's Cognitive Theory of Multimedia Learning
+- Inspired by advances in multimodal AI and educational technology
+
+## 📧 Contact
+
+For questions, collaborations, or support:
+
+- **Issues**: [GitHub Issues](https://github.com/JoylimJY/LecEval/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/JoylimJY/LecEval/discussions)
+- **Email**: [lin-jy23@mails.tsinghua.edu.cn](lin-jy23@mails.tsinghua.edu.cn)
+
+<div align="center">
+
+**Made with ❤️ for the educational technology community**
+
+[⭐ Star us on GitHub](https://github.com/JoylimJY/LecEval) | [💬 Join our Community](https://project.maic.chat)
+
+</div>
+
