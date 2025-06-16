@@ -4,11 +4,11 @@
 
 [![Paper](https://img.shields.io/badge/📄-Paper-blue)](https://arxiv.org/abs/2505.02078v1) 
 [![Dataset](https://img.shields.io/badge/🗂️-Dataset-green)](#dataset) 
-[![Model](https://img.shields.io/badge/🤖-Model-orange)](https://huggingface.co/leceval) 
+[![Model](https://img.shields.io/badge/🤖-Model-orange)](https://huggingface.co/Joylimjy/LecEval) 
 [![Evaluation](https://img.shields.io/badge/📊-Evaluation-purple)](#evaluation) 
 [![License](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
 
-[**🚀 Quick Start**](#quick-start) | [**📊 Leaderboard**](#leaderboard) | [**🛠️ Installation**](#installation) | [**🔧 Toolkit**](#toolkit) | [**📖 Documentation**](#documentation)
+[**🚀 Quick Start**](#quick-start) | [**📊 Leaderboard**](#leaderboard) | [**🛠️ Installation**](#installation) | [**🔧 Toolkit**](#toolkit) | [**📖 Documentation**](src/README.md)
 
 </div>
 
@@ -76,14 +76,6 @@ results = metric.batch_evaluate(presentations)
 - Python 3.8+
 - PyTorch 1.12+
 - CUDA 11.0+ (for GPU acceleration)
-
-### Install from PyPI
-
-```bash
-pip install leceval
-```
-
-### Install from Source
 
 ```bash
 git clone https://github.com/JoylimJY/LecEval.git
@@ -155,7 +147,7 @@ Each sample follows this structure:
   "slide": "/data/images/ml-1/10/slide_000.png",
   "transcript": "Welcome, everyone, to Lecture 5.2 on Alignment and Representation. Today we'll explore how neural networks learn to align different modalities...",
   "rate": {
-    "content_relevance": [5, 5, 4],     // Scores from 3 annotators
+    "content_relevance": [5, 5, 4],    
     "expressive_clarity": [5, 4, 5],
     "logical_structure": [4, 5, 5],
     "audience_engagement": [3, 3, 4]
@@ -331,7 +323,7 @@ pytest tests/
 If you use LecEval in your research, please cite our paper:
 
 ```bibtex
-@misc{yin2025lecevalautomatedmetricmultimodal,
+@misc{joy2025leceval,
       title={LecEval: An Automated Metric for Multimodal Knowledge Acquisition in Multimedia Learning}, 
       author={Joy Lim Jia Yin and Daniel Zhang-Li and Jifan Yu and Haoxuan Li and Shangqing Tu and Yuanchun Wang and Zhiyuan Liu and Huiqin Liu and Lei Hou and Juanzi Li and Bin Xu},
       year={2025},
