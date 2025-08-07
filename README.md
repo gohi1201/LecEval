@@ -318,32 +318,15 @@ pip install -e ".[dev]"
 pytest tests/
 ```
 
-## 📜 Citation
-
-If you use LecEval in your research, please cite our paper:
-
-```bibtex
-@misc{joy2025leceval,
-      title={LecEval: An Automated Metric for Multimodal Knowledge Acquisition in Multimedia Learning}, 
-      author={Joy Lim Jia Yin and Daniel Zhang-Li and Jifan Yu and Haoxuan Li and Shangqing Tu and Yuanchun Wang and Zhiyuan Liu and Huiqin Liu and Lei Hou and Juanzi Li and Bin Xu},
-      year={2025},
-      eprint={2505.02078},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2505.02078}, 
-}
-```
-
 ## 🚀 News & Updates
 
-- **[2025-06]** 🎉 Paper submitted to CIKM resource track!
 - **[2025-05]** 📊 Dataset and model publicly released
 - **[2024-10]** 🏆 Achieved state-of-the-art performance on educational presentation evaluation
 - **[2024-10]** 🔬 Initial research findings published
 
 ## 🙏 Acknowledgments
 
-- Thanks to all annotators who contributed to dataset creation
+- Thanks to all annotators who contributed to the dataset creation
 - Built on the foundations of Mayer's Cognitive Theory of Multimedia Learning
 - Inspired by advances in multimodal AI and educational technology
 
