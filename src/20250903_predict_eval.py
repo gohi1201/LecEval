@@ -1,9 +1,12 @@
+from typing import List
+
 import json
 import os
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from PIL import Image
 from pathlib import Path
+
 
 # Step 1: Initialize the model and tokenizer
 # モデルとトークナイザを読み込む（GPUが利用可能ならto("cuda")を追加）
