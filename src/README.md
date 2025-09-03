@@ -129,19 +129,19 @@ The toolkit includes a comprehensive command-line interface:
 ### Basic Analysis
 ```bash
 # Analyze dataset and generate visualizations
-python main.py --data /dataset/ml-1/metadata.jsonl --images /images --action analyze --output ./results
+python main.py --data ../dataset/ml-1/metadata.jsonl --images /images --action analyze --output ./results
 
 # Verbose analysis with detailed metrics
-python main.py --data /dataset/ml-1/metadata.jsonl --action analyze --verbose --output ./results
+python main.py --data ../dataset/ml-1/metadata.jsonl --action analyze --verbose --output ./results
 ```
 
 ### Sample Visualization
 ```bash
 # Visualize a single sample
-python main.py --data /dataset/ml-1/metadata.jsonl --images /images --action visualize --sample-id ml-1_10_slide_000
+python main.py --data ../dataset/ml-1/metadata.jsonl --images /images --action visualize --sample-id ml-1_10_slide_000
 
 # Batch visualization of multiple samples
-python main.py --data /dataset/ml-1/metadata.jsonl --images /images --action visualize --sample-id ml-1_10_slide_000,ml-1_10_slide_001,ml-1_11_slide_000 --batch --output ./visualizations
+python main.py --data ../dataset/ml-1/metadata.jsonl --images /images --action visualize --sample-id ml-1_10_slide_000,ml-1_10_slide_001,ml-1_11_slide_000 --batch --output ./visualizations
 ```
 
 ### Model Evaluation

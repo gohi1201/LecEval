@@ -17,7 +17,8 @@ import traceback
 
 # Import LecEval modules
 try:
-    from utils import setup_logging, get_config
+    from utils import setup_logging
+    # from utils import setup_logging, get_config
     from dataset import LecEvalDataset
     from analyzer import LecEvalAnalyzer
     from evaluator import LecEvalEvaluator
@@ -238,19 +239,28 @@ def perform_evaluation(dataset: LecEvalDataset, predictions_path: str,
         raise
 
 def list_samples(dataset: LecEvalDataset, limit: int = 10) -> None:
-    """List available samples in the dataset."""
+    """
+    List available samples in the dataset.
+    """
     print("\n" + "="*60)
     print("AVAILABLE SAMPLES")
     print("="*60)
     
-    samples = dataset.get_all_samples()
-    total = len(samples)
+    # Check if the dataset object is empty before processing.
+    if not dataset.data:
+        print("No samples available in the dataset.")
+        return
+
+    # Use dataset.data directly to access the list of samples.
+    total = len(dataset.data)
     
     print(f"Total samples: {total}")
     print(f"Showing first {min(limit, total)} samples:\n")
     
-    for i, sample in enumerate(samples[:limit]):
+    # Iterate over a slice of the dataset to respect the limit.
+    for i, sample in enumerate(dataset.data[:limit]):
         sample_id = sample.get('id', f'sample_{i}')
+        
         transcript_preview = sample.get('transcript', 'No transcript')[:50]
         if len(transcript_preview) == 50:
             transcript_preview += "..."
@@ -274,19 +284,19 @@ def main():
         epilog="""
 Examples:
   # Basic analysis
-  python main.py --data metadata.jsonl --action analyze --output ./results
+  python main.py --data ../dataset/ml-1/metadata.jsonl --action analyze --output ./results
 
   # Visualize specific samples
-  python main.py --data metadata.jsonl --action visualize --sample-id ml-1_10_slide_000
+  python main.py --data ../dataset/ml-1/metadata.jsonl --action visualize --sample-id ml-1_10_slide_000
 
   # Batch visualization
-  python main.py --data metadata.jsonl --action visualize --sample-id ml-1_10_slide_000,ml-1_10_slide_001
+  python main.py --data ../dataset/ml-1/metadata.jsonl --action visualize --sample-id ml-1_10_slide_000,ml-1_10_slide_001
 
   # Evaluate model predictions
-  python main.py --data metadata.jsonl --action evaluate --predictions predictions.json
+  python main.py --data ../dataset/ml-1/metadata.jsonl --action evaluate --predictions predictions.json
 
   # List available samples
-  python main.py --data metadata.jsonl --action list --limit 20
+  python main.py --data ../dataset/ml-1/metadata.jsonl --action list --limit 20
         """
     )
     
