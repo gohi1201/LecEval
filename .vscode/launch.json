@@ -5,6 +5,28 @@
     "version": "0.2.0",
     "configurations": [
 
+    // ただの実行
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "Python: Current File",
+//             "type": "python",
+//             "request": "launch",
+//             "program": "${file}",
+//             "cwd": "${fileDirname}",
+//             "console": "integratedTerminal",
+//             "justMyCode": true,
+//             "python": "/home/imamu20/venvs/leceval/bin/python",
+//             "env": {
+//                 // ここに環境変数を追加
+//                 "LD_LIBRARY_PATH": "/home/imamu20/venvs/leceval/lib/python3.8/site-packages/torch/lib:/path/to/other/libs" 
+//             }
+//         }
+//     ]
+// }
+
+
         
         {
             "name": "Python デバッガー: 現在のファイル",
@@ -32,11 +54,11 @@
             // ]
 
             // Evaluate
-            "args": [
-                "--data", "../dataset/ml-1/metadata.jsonl",
-                "--predictions", "../predictions/your_predictions.jsonl",
-                "--action", "evaluate"
-            ]
+             "args": [
+                 "--data", "../dataset/ml-1/metadata.jsonl",
+                 "--predictions", "../json/20250912_ml-1_predict_eval.json",
+                 "--action", "evaluate"
+             ]
         
         }
     ]

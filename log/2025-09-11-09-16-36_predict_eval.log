@@ -1,0 +1,13 @@
+id,rubric,score
+ml-1_01_slide_000,content_relevance,5
+ml-1_01_slide_000,expressive_clarity, 4
+ml-1_01_slide_000,logical_structure, 4
+ml-1_01_slide_000,audience_engagement, 2
+ml-1_01_slide_001,content_relevance,4
+ml-1_01_slide_001,expressive_clarity, 4
+ml-1_01_slide_001,logical_structure, 4
+ml-1_01_slide_001,audience_engagement, 2
+ml-1_01_slide_002,content_relevance,4
+ml-1_01_slide_002,expressive_clarity, 4
+ml-1_01_slide_002,logical_structure, 4
+ml-1_01_slide_002,audience_engagement, 2

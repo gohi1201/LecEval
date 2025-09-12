@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ml-1_01_slide_000",
+    "content_relevance": 2.0,
+    "expressive_clarity": 4.0,
+    "logical_structure": 4.0,
+    "audience_engagement": 2.0
+  },
+  {
+    "id": "ml-1_01_slide_001",
+    "content_relevance": 4.0,
+    "expressive_clarity": 4.0,
+    "logical_structure": 4.0,
+    "audience_engagement": 2.0
+  },
+  {
+    "id": "ml-1_01_slide_002",
+    "content_relevance": 4.0,
+    "expressive_clarity": 4.0,
+    "logical_structure": 4.0,
+    "audience_engagement": 2.0
+  }
+]

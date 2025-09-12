@@ -8,11 +8,11 @@ import csv
 import json
 import argparse
 import time, datetime
-
-input_csv = "../log/2025-09-11-15-39-22_predict_eval.csv"
+import pandas as pd
+input_csv = "../log/2025-09-11-17-31-44_predict_eval.csv"
 
 dt_str_common = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-output_json = f"../json/{dt_str_common}_predict_eval.csv"
+output_json = f"../json/{dt_str_common}_predict_eval.json"
 
 RUBRICS = [
     "content_relevance",
@@ -49,9 +49,14 @@ def convert(csv_path: str, json_path: str):
                 rec[k] = to_float_or_none(row.get(k, "").strip())
 
             out.append(rec)
+    print(out)
+    df = pd.DataFrame(out)
+    json_str = df.to_json(orient="records", lines=False, force_ascii=False)
+
 
     with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=2)
+        f.write(json_str) 
+    print(f"Wrote {len(out)} records to {json_path}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert LecEval CSV to Evaluator JSON.")

@@ -1,0 +1,152 @@
+id,rubric,score
+ml-1_16_slide_000,content_relevance,4
+ml-1_16_slide_000,expressive_clarity, 3
+ml-1_16_slide_000,logical_structure, 3
+ml-1_16_slide_000,audience_engagement, 1
+ml-1_16_slide_001,content_relevance,4
+ml-1_16_slide_001,expressive_clarity, 4
+ml-1_16_slide_001,logical_structure, 4
+ml-1_16_slide_001,audience_engagement, 3
+ml-1_16_slide_002,content_relevance,4
+ml-1_16_slide_002,expressive_clarity, 4
+ml-1_16_slide_002,logical_structure, 4
+ml-1_16_slide_002,audience_engagement, 2
+ml-1_16_slide_003,content_relevance,4
+ml-1_16_slide_003,expressive_clarity, 4
+ml-1_16_slide_003,logical_structure, 4
+ml-1_16_slide_003,audience_engagement, 2
+ml-1_16_slide_004,content_relevance,4
+ml-1_16_slide_004,expressive_clarity, 3
+ml-1_16_slide_004,logical_structure, 4
+ml-1_16_slide_004,audience_engagement, 2
+ml-1_16_slide_005,content_relevance,4
+ml-1_16_slide_005,expressive_clarity, 4
+ml-1_16_slide_005,logical_structure, 3
+ml-1_16_slide_005,audience_engagement, 2
+ml-1_16_slide_006,content_relevance,4
+ml-1_16_slide_006,expressive_clarity, 4
+ml-1_16_slide_006,logical_structure, 4
+ml-1_16_slide_006,audience_engagement, 3
+ml-1_16_slide_007,content_relevance,4
+ml-1_16_slide_007,expressive_clarity, 3
+ml-1_16_slide_007,logical_structure, 3
+ml-1_16_slide_007,audience_engagement, 2
+ml-1_16_slide_008,content_relevance,3
+ml-1_16_slide_008,expressive_clarity, 3
+ml-1_16_slide_008,logical_structure, 3
+ml-1_16_slide_008,audience_engagement, 2
+ml-1_16_slide_009,content_relevance,4
+ml-1_16_slide_009,expressive_clarity, 3
+ml-1_16_slide_010,content_relevance,4
+ml-1_16_slide_010,expressive_clarity, 4
+ml-1_16_slide_010,logical_structure, 3
+ml-1_16_slide_010,audience_engagement, 3
+ml-1_16_slide_011,content_relevance,3
+ml-1_16_slide_011,expressive_clarity, 4
+ml-1_16_slide_011,logical_structure, 3
+ml-1_16_slide_011,audience_engagement, 2
+ml-1_16_slide_012,content_relevance,3
+ml-1_16_slide_012,expressive_clarity, 3
+ml-1_16_slide_012,logical_structure, 3
+ml-1_16_slide_012,audience_engagement, 2
+ml-1_16_slide_013,content_relevance,4
+ml-1_16_slide_013,expressive_clarity, 3
+ml-1_16_slide_013,logical_structure, 4
+ml-1_16_slide_013,audience_engagement, 3
+ml-1_16_slide_014,content_relevance,3
+ml-1_16_slide_014,expressive_clarity, 3
+ml-1_16_slide_014,logical_structure, 3
+ml-1_16_slide_014,audience_engagement, 2
+ml-1_16_slide_015,content_relevance,4
+ml-1_16_slide_015,expressive_clarity, 3
+ml-1_16_slide_015,logical_structure, 3
+ml-1_16_slide_015,audience_engagement, 2
+ml-1_16_slide_016,content_relevance,4
+ml-1_16_slide_016,expressive_clarity, 3
+ml-1_16_slide_016,logical_structure, 3
+ml-1_16_slide_016,audience_engagement, 2
+ml-1_16_slide_017,content_relevance,4
+ml-1_16_slide_017,expressive_clarity, 3
+ml-1_16_slide_017,logical_structure, 3
+ml-1_16_slide_017,audience_engagement, 3
+ml-1_16_slide_018,content_relevance,4
+ml-1_16_slide_018,expressive_clarity, 3
+ml-1_16_slide_018,logical_structure, 3
+ml-1_16_slide_018,audience_engagement, 2
+ml-1_16_slide_019,content_relevance,4
+ml-1_16_slide_019,expressive_clarity, 3
+ml-1_16_slide_019,logical_structure, 3
+ml-1_16_slide_019,audience_engagement, 3
+ml-1_16_slide_020,content_relevance,4
+ml-1_16_slide_020,expressive_clarity, 3
+ml-1_16_slide_020,logical_structure, 4
+ml-1_16_slide_020,audience_engagement, 2
+ml-1_16_slide_021,content_relevance,4
+ml-1_16_slide_021,expressive_clarity, 3
+ml-1_16_slide_021,logical_structure, 3
+ml-1_16_slide_021,audience_engagement, 3
+ml-1_16_slide_022,content_relevance,4
+ml-1_16_slide_022,expressive_clarity, 3
+ml-1_16_slide_022,logical_structure, 3
+ml-1_16_slide_022,audience_engagement, 3
+ml-1_16_slide_023,content_relevance,3
+ml-1_16_slide_023,expressive_clarity, 3
+ml-1_16_slide_023,logical_structure, 3
+ml-1_16_slide_023,audience_engagement, 2
+ml-1_16_slide_024,content_relevance,3
+ml-1_16_slide_024,expressive_clarity, 3
+ml-1_16_slide_024,logical_structure, 3
+ml-1_16_slide_024,audience_engagement, 2
+ml-1_16_slide_025,content_relevance,5
+ml-1_16_slide_025,expressive_clarity, 3
+ml-1_16_slide_025,logical_structure, 3
+ml-1_16_slide_025,audience_engagement, 2
+ml-1_16_slide_026,content_relevance,4
+ml-1_16_slide_026,expressive_clarity, 3
+ml-1_16_slide_027,content_relevance,4
+ml-1_16_slide_027,expressive_clarity, 4
+ml-1_16_slide_027,logical_structure, 3
+ml-1_16_slide_027,audience_engagement, 3
+ml-1_16_slide_028,content_relevance,4
+ml-1_16_slide_028,expressive_clarity, 3
+ml-1_16_slide_028,logical_structure, 3
+ml-1_16_slide_028,audience_engagement, 2
+ml-1_16_slide_029,content_relevance,3
+ml-1_16_slide_029,expressive_clarity, 3
+ml-1_16_slide_029,logical_structure, 3
+ml-1_16_slide_029,audience_engagement, 2
+ml-1_16_slide_030,content_relevance,3
+ml-1_16_slide_030,expressive_clarity, 3
+ml-1_16_slide_030,logical_structure, 3
+ml-1_16_slide_030,audience_engagement, 2
+ml-1_16_slide_031,content_relevance,3
+ml-1_16_slide_031,expressive_clarity, 3
+ml-1_16_slide_031,logical_structure, 3
+ml-1_16_slide_031,audience_engagement, 2
+ml-1_16_slide_032,content_relevance,4
+ml-1_16_slide_032,expressive_clarity, 3
+ml-1_16_slide_032,logical_structure, 4
+ml-1_16_slide_032,audience_engagement, 2
+ml-1_16_slide_033,content_relevance,4
+ml-1_16_slide_033,expressive_clarity, 3
+ml-1_16_slide_033,logical_structure, 4
+ml-1_16_slide_033,audience_engagement, 2
+ml-1_16_slide_034,content_relevance,4
+ml-1_16_slide_034,expressive_clarity, 3
+ml-1_16_slide_034,logical_structure, 3
+ml-1_16_slide_034,audience_engagement, 2
+ml-1_16_slide_035,content_relevance,4
+ml-1_16_slide_035,expressive_clarity, 3
+ml-1_16_slide_035,logical_structure, 4
+ml-1_16_slide_035,audience_engagement, 2
+ml-1_16_slide_036,content_relevance,3
+ml-1_16_slide_036,expressive_clarity, 3
+ml-1_16_slide_036,logical_structure, 3
+ml-1_16_slide_037,content_relevance,3
+ml-1_16_slide_037,expressive_clarity, 3
+ml-1_16_slide_037,logical_structure, 3
+ml-1_16_slide_037,audience_engagement, 2
+ml-1_16_slide_038,content_relevance,3
+ml-1_16_slide_038,expressive_clarity, 3
+ml-1_16_slide_038,logical_structure, 3
+ml-1_16_slide_038,audience_engagement, 1

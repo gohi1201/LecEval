@@ -200,7 +200,9 @@ def perform_evaluation(dataset: LecEvalDataset, predictions_path: str,
                 predictions = json.load(f)
         
         # Evaluate
-        results = evaluator.evaluate_model(predictions)
+        # results = evaluator.evaluate_model(predictions)
+        # convert
+        results = evaluator.evaluate_model(predictions_path, aggregation_method='mean')
         
         print("\n" + "="*60)
         print("EVALUATION RESULTS")

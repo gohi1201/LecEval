@@ -1,0 +1,8 @@
+theme,presenter_id,slide_num,content_relevance,expressive_clarity,logical_structure,audience_engagement
+ml-1,01,000,2.0,4.0,4.0,2.0
+ml-1,01,001,4.0,4.0,4.0,2.0
+ml-1,01,002,4.0,4.0,4.0,2.0
+ml-1,13,058,4.0,3.0,3.0,2.0
+ml-1,13,059,4.0,3.0,4.0,2.0
+ml-1,13,060,1.0,3.0,4.0,2.0
+ml-1,13,061,1.0,2.0,3.0,1.0

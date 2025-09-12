@@ -11,8 +11,8 @@ model_id = "Joylimjy/LecEval"
 
 # === 入力データ ===
 metadata_name = "ml-1"
-# metadata_file_path = f"../dataset/{metadata_name}/metadata.jsonl"
-metadata_file_path = f"../dataset/{metadata_name}/metadata_test.jsonl"
+metadata_file_path = f"../dataset/{metadata_name}/metadata.jsonl"
+# metadata_file_path = f"../dataset/{metadata_name}/metadata_test.jsonl"
 
 # === 出力（ログ）設定 ===
 dt_str_common = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
